@@ -1,1 +1,9 @@
+# Ignore environment files
+.env
+# Ignore dependencies
+node_modules/
+# Ignore IDE settings
+.vscode/
+# Ignore build outputs
+dist/
 
