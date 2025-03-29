@@ -1,5 +1,7 @@
-node_modules/
-__pycache__/
-.env
+# Ignore unnecessary files in Docker image
 .git
-
+node_modules/
+.env
+*.log
+Dockerfile
+README.md
