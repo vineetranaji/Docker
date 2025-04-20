@@ -1,17 +1,18 @@
-version: '3.8'
-services:
-  web:
-    build: ./dockerfiles
-    ports:
-      - "8080:80"
-    depends_on:
-      - db
-  db:
-    image: mysql:latest
-    restart: always
-    environment:
-      MYSQL_ROOT_PASSWORD: rootpassword
-      MYSQL_DATABASE: app_db
-      MYSQL_USER: user
-      MYSQL_PASSWORD: password
+version: '3.8'  # Version of Docker Compose file format
 
+services:  # Define the services (containers) that will be part of the application
+  web:  # Service for the web application
+    build: ./dockerfiles  # Build the Docker image from the Dockerfile in the './dockerfiles' directory
+    ports:
+      - "8080:80"  # Expose port 80 of the container to port 8080 on the host
+    depends_on:
+      - db  # Ensure that the 'db' service starts before the 'web' service
+
+  db:  # Service for the MySQL database
+    image: mysql:latest  # Use the latest MySQL image from Docker Hub
+    restart: always  # Automatically restart the container if it stops
+    environment:  # Set environment variables for the MySQL container
+      MYSQL_ROOT_PASSWORD: rootpassword  # Root password for MySQL
+      MYSQL_DATABASE: app_db  # Create a database named 'app_db'
+      MYSQL_USER: user  # Create a user 'user' for accessing the database
+      MYSQL_PASSWORD: password  # Set the password for the 'user'
