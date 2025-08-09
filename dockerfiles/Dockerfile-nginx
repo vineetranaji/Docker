@@ -2,8 +2,8 @@
 FROM nginx:latest
 
 # Copy custom Nginx configuration and index page
-COPY nginx.conf /etc/nginx/nginx.conf
-COPY index.html /usr/share/nginx/html/index.html
+COPY ./nginx.conf /etc/nginx/nginx.conf
+COPY ./index.html /usr/share/nginx/html/index.html
 
 # Expose HTTP and HTTPS ports
 EXPOSE 80 443
