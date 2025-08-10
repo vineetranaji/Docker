@@ -3,5 +3,7 @@
 node_modules/
 .env
 *.log
-Dockerfile
-README.md
+__pycache__/
+*.pyc
+*.md
+*.sh

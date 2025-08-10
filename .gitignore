@@ -6,4 +6,6 @@ node_modules/
 .vscode/
 # Ignore build outputs
 dist/
-
+__pycache__/
+*.pyc
+.DS_Store

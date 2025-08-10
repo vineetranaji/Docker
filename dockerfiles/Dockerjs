@@ -1,15 +1,14 @@
 # Use official Node.js image as a base
-FROM node:16
+FROM node:18-alpine
 
 # Set working directory inside the container
-WORKDIR /usr/src/app
+WORKDIR /app
 
 # Copy package.json and install dependencies
-COPY package*.json ./
-RUN npm install
+COPY ../scripts/package*.json ./
+RUN npm install --production
 
-# Copy the rest of the application files
-COPY . .
+COPY ../scripts/app.js . 
 
 # Expose port that the app will run on
 EXPOSE 3000

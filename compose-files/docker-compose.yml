@@ -2,9 +2,13 @@ version: '3.8'
 
 services:
   web:
-    build: ./dockerfiles
+    build:
+      context: ../dockerfiles
+      dockerfile: Dockerfile-python
     ports:
       - "8080:80"
+    volumes:
+      - ../scripts:/app
     depends_on:
       - db
 
@@ -12,7 +16,7 @@ services:
     image: mysql:latest
     restart: always
     environment:
-      MYSQL_ROOT_PASSWORD: rootpassword
-      MYSQL_DATABASE: app_db
-      MYSQL_USER: user
-      MYSQL_PASSWORD: password
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+      MYSQL_DATABASE: ${MYSQL_DATABASE}
+      MYSQL_USER: ${MYSQL_USER}
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD}

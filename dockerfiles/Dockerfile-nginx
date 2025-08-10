@@ -1,5 +1,5 @@
 # Use official Nginx image
-FROM nginx:latest
+FROM nginx:alpine
 
 # Copy custom Nginx configuration and index page
 COPY scripts/nginx.conf /etc/nginx/nginx.conf
