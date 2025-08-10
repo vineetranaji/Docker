@@ -20,6 +20,13 @@ RUN npm install --production
 # Copy application files (including your server.js)
 COPY . .
 
+RUN echo "const express = require('express'); \
+const app = express(); \
+const port = 3000; \
+app.get('/', (req, res) => res.send('Hello from Node in Docker!')); \
+app.listen(port, () => console.log(\`Server running at http://0.0.0.0:\${port}\`));" > server.js
+
+
 EXPOSE 3000
 
 CMD ["node", "server.js"]
