@@ -1,0 +1,24 @@
+FROM ubuntu:22.04
+
+# Install Java (required for Jenkins) and other dependencies
+RUN apt-get update && \
+    apt-get install -y openjdk-11-jdk curl gnupg2 && \
+    rm -rf /var/lib/apt/lists/*
+
+# Add Jenkins key and repository
+RUN curl -fsSL https://pkg.jenkins.io/debian-stable/jenkins.io.key | apt-key add - && \
+    echo "deb https://pkg.jenkins.io/debian-stable binary/" > /etc/apt/sources.list.d/jenkins.list
+
+# Install Jenkins
+RUN apt-get update && \
+    apt-get install -y jenkins && \
+    rm -rf /var/lib/apt/lists/*
+
+# Expose Jenkins port
+EXPOSE 8080
+
+# Set JAVA_HOME environment variable
+ENV JAVA_HOME=/usr/lib/jvm/java-11-openjdk-amd64
+
+# Start Jenkins
+CMD ["bash", "-c", "/usr/bin/jenkins"]
